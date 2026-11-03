@@ -1,27 +1,16 @@
+
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "services": {
-    "client": {
-      "root": "auth-app/client",
-      "framework": "vite"
-    },
-    "server": {
-      "root": "auth-app/server",
-      "framework": "express"
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
     }
-  },
-  "rewrites": [
+  ],
+  "routes": [
     {
-      "source": "/api/(.*)",
-      "destination": {
-        "service": "server"
-      }
-    },
-    {
-      "source": "/(.*)",
-      "destination": {
-        "service": "client"
-      }
+      "src": "/(.*)",
+      "dest": "server.js"
     }
   ]
 }
